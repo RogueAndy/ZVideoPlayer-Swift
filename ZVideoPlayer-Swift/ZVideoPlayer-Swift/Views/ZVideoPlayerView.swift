@@ -35,6 +35,7 @@ class ZVideoPlayerView: UIView {
             
             self.loadInit()
             self.loadViews()
+            self.getPlayButton()
             self.loadLayout()
             self.loadInitStatus()
         
@@ -43,8 +44,8 @@ class ZVideoPlayerView: UIView {
     }
     private var topView: UIView! // 顶部的透明层
     private var bottomView: UIView! // 底部的透明层
-    private var sliderTimer: Timer! // 根据视频的时间设置自动跟新 slider 值的一个定时器
-    private var countSliderFloat: Float! // 累计叠加 slider 的当前的value值，用于计算 slider 已经滑动的长度
+    private var sliderTimer: Timer? // 根据视频的时间设置自动跟新 slider 值的一个定时器
+    private var countSliderFloat: Float! = 0 // 累计叠加 slider 的当前的value值，用于计算 slider 已经滑动的长度
     private var videoTotalTime: Float! // 计算视频的总时间
     private var beforeFrame: CGRect! // 记录 view 上次的 frame
     private var isPlayButton: Bool! = false {
@@ -53,11 +54,11 @@ class ZVideoPlayerView: UIView {
         
             self.isPlayButton = isplaybutton
             if self.isPlayButton == true {
-                self.player.play()
+                self.player.pause()
                 return
             }
             
-            self.player.pause()
+            self.player.play()
         
         }
     
@@ -110,7 +111,7 @@ class ZVideoPlayerView: UIView {
         if self.playButton == nil {
         
             self.playButton = UIButton.init(type: .custom)
-            self.playButton!.setImage(UIImage.init(named: "player"), for: .normal)
+            self.playButton!.setImage(UIImage.init(named: "player")?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: .normal)
             self.playButton!.addTarget(self, action: #selector(replayAction), for: .touchUpInside)
             self.playButton!.frame = CGRect.init(x: 0, y: 0, width: 80, height: 80)
             self.playButton!.center = CGPoint.init(x: self.bounds.size.width / 2.0, y: self.bounds.size.height / 2.0)
@@ -261,6 +262,7 @@ class ZVideoPlayerView: UIView {
         
             UIView.animate(withDuration: 0.25, animations: { 
                 self.transform = .identity
+                self.frame = self.beforeFrame
             }, completion: { (finished) in
                 self.screenButton.setImage(UIImage.init(named: "screen"), for: .normal)
                 self.isFullScreen = false
@@ -274,6 +276,7 @@ class ZVideoPlayerView: UIView {
         
         UIView.animate(withDuration: 0.25, animations: { 
             self.transform = CGAffineTransform.init(rotationAngle: CGFloat(M_PI_2))
+            self.frame = UIScreen.main.bounds
         }) { (finished) in
             self.screenButton.setImage(UIImage.init(named: "scale"), for: .normal)
             self.isFullScreen = true
@@ -284,7 +287,7 @@ class ZVideoPlayerView: UIView {
     @objc private func sliderBegan(sender: UIButton) {
     
         self.player.pause()
-        self.sliderTimer.invalidate()
+        self.sliderTimer?.invalidate()
         self.sliderTimer = nil
     
     }
@@ -293,6 +296,11 @@ class ZVideoPlayerView: UIView {
     
         self.player.seek(to: CMTime.init(value: CMTimeValue(self.slider.value), timescale: 1))
         self.countSliderFloat = self.slider.value
+        if self.isPlayButton == true {
+        
+            return
+            
+        }
         self.sliderTimer = Timer.scheduledTimer(timeInterval: self.zvideo_timer_move_distance, target: self, selector: #selector(countSlider), userInfo: nil, repeats: true)
         self.player.play()
         
@@ -302,7 +310,7 @@ class ZVideoPlayerView: UIView {
     
         if self.countSliderFloat > self.videoTotalTime {
         
-            self.sliderTimer.invalidate()
+            self.sliderTimer?.invalidate()
             return
         
         }
@@ -315,7 +323,7 @@ class ZVideoPlayerView: UIView {
     @objc private func stopAction(sender: UIButton) {
     
         self.player.pause()
-        self.sliderTimer.invalidate()
+        self.sliderTimer?.invalidate()
         self.sliderTimer = nil
         self.afterStop()
     
@@ -373,6 +381,7 @@ class ZVideoPlayerView: UIView {
     
     private func afterStop() {
     
+        self.getPlayButton()
         self.playButton?.alpha = 0
         UIView.animate(withDuration: 0.25) { 
             self.playButton?.alpha = 1
