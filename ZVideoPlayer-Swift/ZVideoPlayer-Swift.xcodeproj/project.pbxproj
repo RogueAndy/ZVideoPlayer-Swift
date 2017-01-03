@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABBA3FE11E1B85C70051E7DD /* TypeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBA3FE01E1B85C70051E7DD /* TypeControl.swift */; };
 		ABE2FBB51E1633EB00FBC120 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2FBB41E1633EB00FBC120 /* AppDelegate.swift */; };
 		ABE2FBB71E1633EB00FBC120 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE2FBB61E1633EB00FBC120 /* ViewController.swift */; };
 		ABE2FBBA1E1633EB00FBC120 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABE2FBB81E1633EB00FBC120 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ABBA3FE01E1B85C70051E7DD /* TypeControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeControl.swift; sourceTree = "<group>"; };
 		ABE2FBB11E1633EB00FBC120 /* ZVideoPlayer-Swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ZVideoPlayer-Swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE2FBB41E1633EB00FBC120 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABE2FBB61E1633EB00FBC120 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		ABE2FBC61E16344200FBC120 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				ABBA3FE01E1B85C70051E7DD /* TypeControl.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABE2FBB71E1633EB00FBC120 /* ViewController.swift in Sources */,
+				ABBA3FE11E1B85C70051E7DD /* TypeControl.swift in Sources */,
 				ABE2FBB51E1633EB00FBC120 /* AppDelegate.swift in Sources */,
 				ABE2FBDA1E1634DC00FBC120 /* ZVideoPlayerView.swift in Sources */,
 				ABE2FBD51E16344200FBC120 /* ZSBaseTableViewCell.swift in Sources */,
@@ -368,6 +372,7 @@
 				ABE2FBC51E1633EB00FBC120 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
