@@ -333,7 +333,7 @@
 				INFOPLIST_FILE = "ZVideoPlayer-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogue.zlj.ZVideoPlayer-Swift1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rogue.zlj.ZVideoPlayer-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -347,7 +347,7 @@
 				INFOPLIST_FILE = "ZVideoPlayer-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.rogue.zlj.ZVideoPlayer-Swift1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rogue.zlj.ZVideoPlayer-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
