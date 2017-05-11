@@ -133,7 +133,7 @@ class ZVideoPlayerView: UIView {
     
     private func loadViews() {
     
-        if self.urlString.hasSuffix("http") {
+        if self.urlString.hasPrefix("http") {
         
             self.loadOnlineVideo()
         
